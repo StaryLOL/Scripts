@@ -1,4 +1,11 @@
-
+game.StarterGui:SetCore( 
+    "ChatMakeSystemMessage",  { 
+        Text = "{PURPUL} made by star (v2.0)", 
+        Color = Color3.fromRGB(221,160,221), 
+        Font = Enum.Font.Arial, 
+        FontSize = Enum.FontSize.Size24 
+    } 
+)
 
 
 local ScreenGui = Instance.new("ScreenGui")
