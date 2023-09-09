@@ -65,3 +65,4 @@ PurpulText_2.Font = Enum.Font.SourceSansBold
 PurpulText_2.Text = "v1.0"
 PurpulText_2.TextColor3 = Color3.new(0.639216, 0.14902, 0.639216)
 PurpulText_2.TextSize = 24
+  
