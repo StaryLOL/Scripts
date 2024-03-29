@@ -1,5 +1,4 @@
---FE Simple AimLock Script | Released Nov 2021 | Working.
-local Area = game:GetService("Workspace")
+ local Area = game:GetService("Workspace")
 local RunService = game:GetService("RunService")
 local UIS = game:GetService("UserInputService")
 local Players = game:GetService("Players")
@@ -85,4 +84,4 @@ UIS.InputEnded:Connect(function(Input)
 		UnLockCursor()
 	end
 end)
-game.StarterGui:SetCore("SendNotification", {Title = "rs.aim", Text = "Hold M2 (mouse right button) for aimlock.", Duration = 4,})
+ 
