@@ -1463,6 +1463,22 @@ run(function()
                 World
             ]]
 
+        run(function()
+            local Moduletest = vapelite:CreateModule({
+                Name = 'Moduletest',
+                Function = function(callback)
+                    if callback then
+                        repeat
+                        print("i")
+                        task.wait(1) 
+                    until not Moduletest.Enabled
+                end
+            end,
+      Tooltip = 'test'
+    })
+end)
+
+                                                                                                                                        
             run(function()
                 local AutoTool = {Enabled = false}
                 local oldHitBlock
