@@ -1463,18 +1463,51 @@ run(function()
                 World
             ]]
 
-        run(function()
-            local Moduletest = vapelite:CreateModule({
-                Name = 'Moduletest',
-                Function = function(callback)
-                    if callback then
-                        repeat
-                        print("i")
-                        task.wait(1) 
-                    until not Moduletest.Enabled
+
+
+run(function()
+    local AutoHannah = vapelite:CreateModule({
+        Name = 'AutoHannah',
+        Function = function(callback)
+            local LocalPlayer = game.Players.LocalPlayer
+            local Range = RangeValue.Value 
+
+            while task.wait() and AutoHannah.Enabled do
+                local localPlayerCharacter = LocalPlayer.Character
+                local localPlayerPosition = localPlayerCharacter and localPlayerCharacter.PrimaryPart and localPlayerCharacter.PrimaryPart.Position
+
+                if localPlayerPosition then
+                    for _, v in ipairs(game.Players:GetChildren()) do
+                        if v:IsA("Player") and v.Character and v ~= LocalPlayer then
+                            local targetPlayerCharacter = v.Character
+                            local targetPlayerPosition = targetPlayerCharacter.PrimaryPart and targetPlayerCharacter.PrimaryPart.Position
+
+                            if targetPlayerPosition then
+                                local distance = (localPlayerPosition - targetPlayerPosition).Magnitude
+                                if distance <= Range then   
+                                    local Args = {
+                                        [1] = {
+                                            ["user"] = LocalPlayer,
+                                            ["victimEntity"] = targetPlayerCharacter
+                                        }
+                                    }
+
+                                    game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("HannahPromptTrigger"):InvokeServer(unpack(Args))
+                                end
+                            end
+                        end
+                    end
                 end
-            end,
-      Tooltip = 'test'
+            end
+        end,
+        Tooltip = 'Automatically triggers Hannah on players in a stud range'
+    })
+
+    local RangeValue = AutoHannah:CreateSlider({
+        Name = 'Range',
+        Min = 0,
+        Max = 50,
+        Default = 15  
     })
 end)
 
