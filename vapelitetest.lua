@@ -1370,7 +1370,7 @@ run(function()
         Name = 'HannahAura',
         Function = function(callback)
             if callback then
-                local LocalPlayer = game.Players.LocalPlayer
+            local LocalPlayer = game.Players.LocalPlayer
 
 while task.wait() do
     local localPlayerCharacter = LocalPlayer.Character
@@ -1384,7 +1384,7 @@ while task.wait() do
 
                 if targetPlayerPosition then
                     local distance = (localPlayerPosition - targetPlayerPosition).Magnitude
-                    if distance <= 35 then   
+                    if distance <= 30 then 
                         local Args = {
                             [1] = {
                                 ["user"] = LocalPlayer,
