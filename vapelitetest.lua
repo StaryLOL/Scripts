@@ -761,6 +761,47 @@ run(function()
                 KillauraMoving = Killaura:CreateToggle({Name = 'Only while moving'})
             end)
 
+
+            run(function()
+                local HannahAura = vapelite:CreateModule({
+                    Name = 'HannahAura',
+                    Function = function(callback)
+                        if callback then
+                        local LocalPlayer = game.Players.LocalPlayer
+            
+            while task.wait() do
+                local localPlayerCharacter = LocalPlayer.Character
+                local localPlayerPosition = localPlayerCharacter and localPlayerCharacter.PrimaryPart and localPlayerCharacter.PrimaryPart.Position
+            
+                if localPlayerPosition then
+                    for i, v in pairs(game.Players:GetChildren()) do
+                        if v:IsA("Player") and v.Character and v ~= LocalPlayer then
+                            local targetPlayerCharacter = v.Character
+                            local targetPlayerPosition = targetPlayerCharacter.PrimaryPart and targetPlayerCharacter.PrimaryPart.Position
+            
+                            if targetPlayerPosition then
+                                local distance = (localPlayerPosition - targetPlayerPosition).Magnitude
+                                if distance <= 30 then 
+                                    local Args = {
+                                        [1] = {
+                                            ["user"] = LocalPlayer,
+                                            ["victimEntity"] = targetPlayerCharacter
+                                        }
+                                    }
+            
+                                    game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("HannahPromptTrigger"):InvokeServer(unpack(Args))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            
+                        end
+                    end,
+                    Tooltip = 'hannahaura (35 studs)'
+                })
+            end)
             --[[
                 Render
             ]]
@@ -1365,46 +1406,7 @@ run(function()
                 Utility
             ]]
                                                                                                                                 
-run(function()
-    local HannahAura = vapelite:CreateModule({
-        Name = 'HannahAura',
-        Function = function(callback)
-            if callback then
-            local LocalPlayer = game.Players.LocalPlayer
 
-while task.wait() do
-    local localPlayerCharacter = LocalPlayer.Character
-    local localPlayerPosition = localPlayerCharacter and localPlayerCharacter.PrimaryPart and localPlayerCharacter.PrimaryPart.Position
-
-    if localPlayerPosition then
-        for i, v in pairs(game.Players:GetChildren()) do
-            if v:IsA("Player") and v.Character and v ~= LocalPlayer then
-                local targetPlayerCharacter = v.Character
-                local targetPlayerPosition = targetPlayerCharacter.PrimaryPart and targetPlayerCharacter.PrimaryPart.Position
-
-                if targetPlayerPosition then
-                    local distance = (localPlayerPosition - targetPlayerPosition).Magnitude
-                    if distance <= 30 then 
-                        local Args = {
-                            [1] = {
-                                ["user"] = LocalPlayer,
-                                ["victimEntity"] = targetPlayerCharacter
-                            }
-                        }
-
-                        game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("HannahPromptTrigger"):InvokeServer(unpack(Args))
-                    end
-                end
-            end
-        end
-    end
-end
-
-            end
-        end,
-        Tooltip = 'hannahaura (35 studs)'
-    })
-end)
 
                                                                                                                                     
  run(function()
