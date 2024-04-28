@@ -578,8 +578,8 @@ run(function()
                 AutoClickerCPS = AutoClicker:CreateSlider({
                     Name = 'CPS',
                     Min = 1,
-                    Max = 12,
-                    Default = 12
+                    Max = 15,
+                    Default = 15
                 })
                 AutoClickerBlocks = AutoClicker:CreateToggle({
                     Name = 'Place Blocks',
@@ -781,7 +781,7 @@ run(function()
             
                             if targetPlayerPosition then
                                 local distance = (localPlayerPosition - targetPlayerPosition).Magnitude
-                                if distance <= 30 then 
+                                if distance <= 21 then 
                                     local Args = {
                                         [1] = {
                                             ["user"] = LocalPlayer,
@@ -797,6 +797,10 @@ run(function()
                 end
             end
             
+        else 
+
+            func:disconnect()
+
                         end
                     end,
                     Tooltip = 'hannahaura (35 studs)'
