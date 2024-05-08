@@ -1,5 +1,5 @@
 return {
-    {name = "TableInSkywars", tags = {3}},
+    {name = "NotStar007", tags = {3}},
     {name = "test", tags = {1, 2}},
 }
 
